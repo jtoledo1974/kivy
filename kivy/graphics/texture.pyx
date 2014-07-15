@@ -407,7 +407,7 @@ cdef inline GLuint _str_to_gl_texture_wrap(x):
 cdef inline int _gl_format_size(GLuint x):
     '''Return the GL numeric value from a texture wrap string.
     '''
-    if x in (GL_RGB, GL_BGR):
+    if x in (GL_RGB, GL_BGR, GL_ETC1_RGB8_OES):
         return 3
     elif x in (GL_RGBA, GL_BGRA):
         return 4
@@ -419,7 +419,7 @@ cdef inline int _gl_format_size(GLuint x):
             GL_COMPRESSED_RGBA_S3TC_DXT3_EXT,
             GL_COMPRESSED_RGBA_S3TC_DXT5_EXT):
         return 4
-    raise Exception('Unsupported format size <%s>' % str(format))
+    raise Exception('Unsupported format size <{:#x}>'.format(x))
 
 
 cdef inline int _is_gl_format_supported(x):
