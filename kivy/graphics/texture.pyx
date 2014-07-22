@@ -864,6 +864,9 @@ cdef class Texture:
             buffer interface and / or memoryviews thereof.
 
         '''
+
+        print "blit_buffer size %s colorfmt %s bufferfmt %s" % (size, colorfmt, bufferfmt)
+
         cdef GLuint target = self._target
         cdef int glbufferfmt
         if colorfmt is None:
